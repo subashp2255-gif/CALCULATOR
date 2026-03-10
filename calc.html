@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <title>
+            CALCULATOR
+        </title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div id="calculator">
+            <input id="display" readonly>
+            <div id="buttons">
+                <button style="grid-area: se;" id="seven" onclick="appendtodisplay('7')">7</button>
+                <button style="grid-area: e;" id="eight" onclick="appendtodisplay('8')">8</button>
+                <button style="grid-area: ni;" id="nine" onclick="appendtodisplay('9')">9</button>
+                <button style="grid-area: fo;" id="four" onclick="appendtodisplay('4')">4</button>
+                <button style="grid-area: fi;" id="five" onclick="appendtodisplay('5')">5</button>
+                <button style="grid-area: six;" id="six" onclick="appendtodisplay('6')">6</button>
+                <button style="grid-area: on;" id="one" onclick="appendtodisplay('1')">1</button>
+                <button style="grid-area: tw;" id="two" onclick="appendtodisplay('2')">2</button>
+                <button style="grid-area: th;" id="three" onclick="appendtodisplay('3')">3</button>
+                <button style="grid-area: z;" id="zero" onclick="appendtodisplay('0')">0</button>
+                <button style="grid-area: dot; " id="dot" onclick="appendtodisplay('.')">.</button>
+                <button style="grid-area: plus;" id="plus" onclick="appendtodisplay('+')">+</button>
+                <button style="grid-area: equal;" id="equal" onclick="calculate()">=</button>
+                <button style="grid-area: minus;" id="minus" onclick="appendtodisplay('-')">-</button>
+                <button style="grid-area: multi;" id="multi" onclick="appendtodisplay('*')">*</button>
+                <button style="grid-area: divi;" id="divi" onclick="appendtodisplay('/')">/</button>
+                <button style="grid-area: reset;" id="reset"onclick="reset()">C</button>
+                <button style="grid-area: del;" id="del" onclick="del()">DEL</button>
+            </div>
+        </div> 
+    </body>
+</html>
+<script>
+const display = document.getElementById("display");
+function appendtodisplay(input){
+    display.value += input;  
+}
+function calculate(){
+    try{
+        display.value = eval(display.value);
+}
+    catch{
+        display.value = "error";
+    }
+} 
+function reset()
+{
+    display.value = "";
+}
+function del()
+{
+    display.value = display.value.slice(0,-1);
+}
+document.addEventListener("keydown", function(event) {
+    const key = event.key;
+
+    if (!isNaN(key) || key === "." || key === "+" || key === "-" || key === "*" || key === "/") {
+        event.preventDefault();    
+        appendtodisplay(key);
+    }
+    else if (key === "Enter") {
+        event.preventDefault();
+        calculate();
+    }
+    else if (key === "Backspace" || key === "Delete") {
+        event.preventDefault();
+        del();
+    }
+    else if (key === "Escape" ) {
+        event.preventDefault();
+        reset();
+    }
+});
+</script>

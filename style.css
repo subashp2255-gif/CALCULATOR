@@ -1,0 +1,64 @@
+
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg,#141e30,#4e80b9);
+    font-family: Arial, sans-serif;
+}
+
+
+#calculator{
+    background:linear-gradient(black,rgb(21, 21, 21));
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    padding: 25px;
+}
+#display{
+    margin-top: 20px;
+    font-size: 28px;
+    text-align: left;
+    padding-right: 10px;
+    box-shadow:  0 0 10px rgba(0,0,0,0.7);
+    margin-bottom: 50px;
+    height: 75px;
+}
+#buttons button{
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    background: #2c2c3c;
+    color: white;
+    transition: 0.2s;
+    border-radius: 30px;
+}
+
+#buttons button:hover{
+    background: #44445a;
+    transform: scale(1.05);
+}
+
+
+#buttons button:active{
+    transform: scale(0.95);
+}
+
+#buttons{
+    display: grid;
+    grid-template-columns: repeat(4, 50px);  /* match button width */
+    grid-template-rows: repeat(8, 50px);     /* match button height */
+    grid-template-areas:
+        "reset reset del del"
+        "reset reset del del"
+        "se e ni minus"
+        "fo fi six plus"
+        "on tw th divi"
+        "z multi dot equal";
+    gap: 12px;
+    justify-content: center;
+}
+            
+
+
